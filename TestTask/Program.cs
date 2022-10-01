@@ -16,3 +16,42 @@
 ["Russia", "Denmark", "Kazan"] -> []
 */
 
+Console.Clear();
+Console.Write("Введите количество элементов массива: ");
+int size = Convert.ToInt32(Console.ReadLine());
+
+string[] initialArray = new string[size]; //пользователь заполняет массив заданным кол-вом элементов  - переменная [size]  
+for (int i = 0; i < size; i++)
+{
+    Console.WriteLine($"Введите {i+1}-й элемент массива: ");
+    string element = Convert.ToString(Console.ReadLine());
+    initialArray[i] = element;
+}
+
+string[] resultingArray = new string[size]; //формируется итоговый массив перебором исходного массива
+int lim = 3; //предельная длина элемента для формирования нового массива
+int count = 0; //дополнительный счётчик
+for (int j = 0; j < size; j++)
+{
+    if (initialArray[j].Length <= lim)
+    {
+        resultingArray[count] = initialArray[j];
+        count++;
+    }
+}
+Console.WriteLine($"\n Задан массив: ");
+Console.Write("[ ");
+PrintArray(initialArray);
+Console.WriteLine("]");
+Console.WriteLine($"\n Из заданного массива сформирован массив элементов с длиной равной 3 или менее символам: ");
+Console.Write("[ ");
+PrintArray(resultingArray);
+Console.WriteLine("]");
+
+void PrintArray(string[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+}
